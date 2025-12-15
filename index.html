@@ -3,124 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy 6 Months ❤️</title>
+<title>Happy 6 Months</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(180deg, #ffd1dc, #ffb6c1);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* TIM RƠI */
-.heart {
-    position: fixed;
-    top: -20px;
-    font-size: 20px;
-    animation: fall linear infinite;
-}
-@keyframes fall {
-    to { transform: translateY(110vh); }
+body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    background:linear-gradient(180deg,#ffd1dc,#ffb6c1);
+    min-height:100vh;
 }
 
 /* PHONG BÌ */
-.envelope {
-    width: 340px;
-    height: 220px;
-    background: #ff7fa2;
-    margin: 120px auto;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+.envelope{
+    width:360px;
+    height:230px;
+    background:#ff7fa2;
+    margin:140px auto;
+    border-radius:22px;
+    position:relative;
+    cursor:pointer;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:20px;
+    font-weight:600;
 }
 
-.envelope::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #ff4f7b;
-    clip-path: polygon(0 0, 50% 55%, 100% 0);
-    border-radius: 20px 20px 0 0;
+.envelope::before{
+    content:"";
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+    background:#ff4f7b;
+    clip-path:polygon(0 0,50% 55%,100% 0);
+    border-radius:22px 22px 0 0;
 }
 
-.hidden { display: none; }
+.hidden{display:none}
 
 /* THIỆP */
-.card {
-    max-width: 92%;
-    background: white;
-    margin: 40px auto;
-    border-radius: 26px;
-    padding: 26px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-    animation: zoomIn 0.6s ease;
+.card{
+    max-width:94%;
+    background:#fff;
+    margin:40px auto;
+    border-radius:26px;
+    padding:26px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    animation:zoom .6s ease;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+@keyframes zoom{
+    from{transform:scale(.85);opacity:0}
+    to{transform:scale(1);opacity:1}
 }
 
-h1 {
-    text-align: center;
-    color: #ff4f7b;
+h1{
+    text-align:center;
+    color:#ff4f7b;
 }
 
-.days {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
+.days{
+    text-align:center;
+    font-weight:600;
+    margin-bottom:18px;
 }
 
-/* LỜI NHẮN */
-.message {
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 25px;
+.message{
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:24px;
 }
 
-/* SLIDER */
-.slider {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
+/* SLIDE */
+.slider{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
 }
 
-.slide {
-    display: none;
+.slide{display:none}
+.slide.active{display:block}
+
+.slide img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+    object-position:center;
+    border-radius:20px;
 }
 
-.slide.active {
-    display: block;
-}
-
-.slide img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 20px;
-}
-
-.caption {
-    text-align: center;
-    margin-top: 10px;
-    background: #888;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 14px;
-    font-size: 14px;
+.caption{
+    text-align:center;
+    margin-top:10px;
+    background:#777;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:14px;
+    font-size:14px;
 }
 </style>
 </head>
@@ -128,71 +110,62 @@ h1 {
 <body>
 
 <div class="envelope" onclick="openCard()">
-    💌 Bấm để mở thiệp 💌
+    Bấm để mở thiệp
 </div>
 
 <div id="card" class="card hidden">
-    <h1>Happy 6 Months ❤️</h1>
+    <h1>Happy 6 Months</h1>
 
     <div class="days" id="days"></div>
 
     <div class="message">
-        ❤️ Có những lúc anh với em từng nghĩ đến việc dừng lại nhưng không thể vì anh với em đã quen hình bóng của nhau rồi.<br><br>
+        Có những lúc anh với em từng nghĩ đến việc dừng lại nhưng không thể
+        vì anh với em đã quen hình bóng của nhau rồi.<br><br>
 
-        ❤️ Cảm ơn em vì đã ở bên anh những lúc anh khó khăn và những lúc anh nóng tính nói với em những lời hơi khó nghe.<br>
-        Và cảm ơn em vì em đã đồng hành và giúp anh sửa những điều chưa được tốt và giúp đỡ anh rất nhiều 💗<br><br>
+        Cảm ơn em vì đã ở bên anh những lúc anh khó khăn và cả những lúc
+        anh nóng tính nói những lời hơi khó nghe.<br>
+        Cảm ơn em vì đã đồng hành và giúp anh sửa những điều chưa tốt
+        và giúp anh rất nhiều.<br><br>
 
-        ❤️ Anh mong là sau này dù có gì em vẫn sẽ ở bên anh và cùng anh già đi.<br>
-        Anh yêu em nhiều lắm ❤️
+        Anh mong sau này dù có chuyện gì em vẫn ở bên anh
+        và cùng anh già đi.<br>
+        Anh yêu em rất nhiều.
     </div>
 
     <div class="slider">
         <div class="slide active">
-            <img src="https://drive.google.com/uc?id=1ZfS8azEQnQN0MeDboWAnO0c_NCb1jwi5">
-            <div class="caption">Buổi đi chơi đầu tiên 💕</div>
+            <img src="https://drive.google.com/thumbnail?id=1ZfS8azEQnQN0MeDboWAnO0c_NCb1jwi5&sz=w1000">
+            <div class="caption">Buổi đi chơi đầu tiên</div>
         </div>
 
         <div class="slide">
-            <img src="https://drive.google.com/uc?id=1accmhvCrswYaJWROsRLzpGAF6HWiwZTx">
-            <div class="caption">Buổi đi chơi gần đây nhất 💗</div>
+            <img src="https://drive.google.com/thumbnail?id=1accmhvCrswYaJWROsRLzpGAF6HWiwZTx&sz=w1000">
+            <div class="caption">Buổi đi chơi gần đây nhất</div>
         </div>
     </div>
 </div>
 
 <script>
-function openCard() {
-    document.querySelector('.envelope').style.display = 'none';
+function openCard(){
+    document.querySelector('.envelope').style.display='none';
     document.getElementById('card').classList.remove('hidden');
-    startHearts();
 }
 
-/* ĐẾM NGÀY YÊU */
-const startDate = new Date("2025-06-15");
-const today = new Date();
-const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-document.getElementById("days").innerText = `Tụi mình đã yêu nhau được ${diff} ngày 💖`;
+/* ĐẾM NGÀY */
+const start=new Date("2025-06-15");
+const now=new Date();
+const days=Math.floor((now-start)/(1000*60*60*24));
+document.getElementById("days").innerText=
+`Tụi mình đã yêu nhau được ${days} ngày`;
 
 /* AUTO SLIDE */
-let index = 0;
-setInterval(() => {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach(s => s.classList.remove('active'));
-    index = (index + 1) % slides.length;
-    slides[index].classList.add('active');
-}, 3000);
-
-/* TIM RƠI */
-function startHearts() {
-    setInterval(() => {
-        const h = document.createElement("div");
-        h.className = "heart";
-        h.innerText = "❤️";
-        h.style.left = Math.random() * 100 + "vw";
-        h.style.animationDuration = (2 + Math.random() * 3) + "s";
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), 5000);
-    }, 300);
-}
+let i=0;
+setInterval(()=>{
+    const s=document.querySelectorAll('.slide');
+    s.forEach(x=>x.classList.remove('active'));
+    i=(i+1)%s.length;
+    s[i].classList.add('active');
+},3000);
 </script>
 
 </body>
