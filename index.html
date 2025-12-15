@@ -77,22 +77,16 @@ h1{
     margin-bottom:24px;
 }
 
-/* SLIDE */
-.slider{
-    position:relative;
-    overflow:hidden;
+/* ẢNH */
+.photo{
     border-radius:20px;
+    overflow:hidden;
 }
 
-.slide{display:none}
-.slide.active{display:block}
-
-.slide img{
+.photo img{
     width:100%;
-    height:340px;
+    height:360px;
     object-fit:cover;
-    object-position:center;
-    border-radius:20px;
 }
 
 .caption{
@@ -132,17 +126,11 @@ h1{
         Anh yêu em rất nhiều.
     </div>
 
-    <div class="slider">
-        <div class="slide active">
-            <img src="https://drive.google.com/thumbnail?id=1ZfS8azEQnQN0MeDboWAnO0c_NCb1jwi5&sz=w1000">
-            <div class="caption">Buổi đi chơi đầu tiên</div>
-        </div>
-
-        <div class="slide">
-            <img src="https://drive.google.com/thumbnail?id=1accmhvCrswYaJWROsRLzpGAF6HWiwZTx&sz=w1000">
-            <div class="caption">Buổi đi chơi gần đây nhất</div>
-        </div>
+    <div class="photo">
+        <img src="https://drive.google.com/thumbnail?id=1ZfS8azEQnQN0MeDboWAnO0c_NCb1jwi5&sz=w1000">
     </div>
+
+    <div class="caption">Buổi đi chơi đầu tiên</div>
 </div>
 
 <script>
@@ -157,15 +145,6 @@ const now=new Date();
 const days=Math.floor((now-start)/(1000*60*60*24));
 document.getElementById("days").innerText=
 `Tụi mình đã yêu nhau được ${days} ngày`;
-
-/* AUTO SLIDE */
-let i=0;
-setInterval(()=>{
-    const s=document.querySelectorAll('.slide');
-    s.forEach(x=>x.classList.remove('active'));
-    i=(i+1)%s.length;
-    s[i].classList.add('active');
-},3000);
 </script>
 
 </body>
