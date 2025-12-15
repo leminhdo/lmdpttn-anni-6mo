@@ -2,101 +2,99 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Happy 6 Months ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 6 Months ❤️</title>
 
 <style>
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
     height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', sans-serif;
     overflow: hidden;
 }
 
 /* ===== PHONG BÌ ===== */
-.envelope {
-    width: 380px;
-    height: 250px;
-    background: #ff6f91;
+#envelope {
+    width: 300px;
+    height: 200px;
+    background: #ff7a9e;
     border-radius: 20px;
     position: relative;
     cursor: pointer;
-    box-shadow: 0 14px 35px rgba(0,0,0,0.3);
-    transition: transform .5s ease, opacity .5s ease;
-    z-index: 2;
-    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transition: transform .6s ease;
 }
 
-.envelope span {
-    position: absolute;
-    bottom: 28px;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 3;
+#envelope.open {
+    transform: scale(0.85);
 }
 
-/* Nắp phong bì */
 .flap {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: #ff4d6d;
-    clip-path: polygon(0 0, 100% 0, 50% 58%);
+    background: #ff4f7b;
+    clip-path: polygon(0 0, 100% 0, 50% 55%);
+    transition: transform .6s ease;
     transform-origin: top;
-    transition: transform .7s ease;
-    z-index: 4;
 }
 
-.envelope.open .flap {
+#envelope.open .flap {
     transform: rotateX(180deg);
 }
 
-.envelope.hide {
-    opacity: 0;
-    transform: scale(0.9);
-    pointer-events: none;
+.front-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 25px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 /* ===== THIỆP ===== */
-.card {
+#card {
     position: absolute;
-    width: 420px;
-    max-width: 94vw;
-    background: #fff;
-    padding: 30px;
-    border-radius: 26px;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.3);
-    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     opacity: 0;
     transform: scale(0.85);
-    transition: opacity .6s ease, transform .6s ease;
-    z-index: 5;
+    transition: all .6s ease;
+    display: none;
 }
 
-.card.show {
+#card.show {
+    display: block;
     opacity: 1;
     transform: scale(1);
 }
 
-.card h1 {
-    color: #ff4d6d;
-    margin-bottom: 6px;
-    font-size: 26px;
+h2 {
+    text-align: center;
+    color: #ff4f7b;
+    margin-bottom: 10px;
 }
 
-.counter {
-    font-size: 16px;
-    color: #ff6f91;
+#dayCounter {
+    text-align: center;
+    margin-bottom: 14px;
     font-weight: bold;
-    margin-bottom: 15px;
 }
 
 /* ===== TIMELINE ===== */
@@ -104,14 +102,8 @@ body {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 14px;
-    margin-bottom: 20px;
-    padding-bottom: 6px;
     scroll-behavior: smooth;
-}
-
-.timeline::-webkit-scrollbar {
-    display: none;
+    gap: 14px;
 }
 
 .slide {
@@ -122,40 +114,30 @@ body {
 
 .slide img {
     width: 100%;
-    height: 260px;
+    height: 240px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 18px;
 }
 
-/* Caption */
 .caption {
     position: absolute;
     bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0,0,0,0.45);
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 16px;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 14px;
     font-size: 14px;
     backdrop-filter: blur(3px);
 }
 
-/* ===== NỘI DUNG ===== */
-.card p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.7;
-}
-
 /* ===== TIM RƠI ===== */
-.heart-fall {
+.heart {
     position: fixed;
     top: -10px;
-    font-size: 18px;
+    color: #ff4f7b;
     animation: fall linear forwards;
-    pointer-events: none;
-    z-index: 1;
 }
 
 @keyframes fall {
@@ -170,50 +152,33 @@ body {
 <body>
 
 <!-- PHONG BÌ -->
-<div class="envelope" id="envelope" onclick="openCard()">
+<div id="envelope" onclick="openCard()">
     <div class="flap"></div>
-    <span>💌 Bấm để mở thiệp 💌</span>
+    <div class="front-text">💌 Bấm để mở thiệp 💌</div>
 </div>
 
 <!-- THIỆP -->
-<div class="card" id="card">
+<div id="card">
+    <h2>Gửi bé iu của anh 💕</h2>
+    <div id="dayCounter"></div>
 
-    <!-- TIMELINE -->
-    <div class="timeline" id="timeline">
-
+    <div class="timeline">
         <div class="slide">
             <img src="https://drive.google.com/uc?export=view&id=1ZfS8azEQnQN0MeDboWAnO0c_NCb1jwi5">
-            <div class="caption">Buổi đi chơi đầu tiên của tụi mình 💕</div>
+            <div class="caption">Buổi đi chơi đầu tiên của tụi mình ❤️</div>
         </div>
 
         <div class="slide">
             <img src="https://drive.google.com/uc?export=view&id=1accmhvCrswYaJWROsRLzpGAF6HWiwZTx">
-            <div class="caption">Bữa đi chơi gần đây nhất của tụi mình 🥰</div>
+            <div class="caption">Buổi đi chơi gần đây nhất 💕</div>
         </div>
-
     </div>
-
-    <h1>Happy 6 Months ❤️</h1>
-    <div class="counter" id="dayCounter"></div>
-
-    <p>
-        Gửi bé iu của anh 💕<br><br>
-        Hôm nay là tròn 6 tháng 2 đứa mình bên nhau gòi đó hì hì 🥰<br><br>
-        Có những lúc anh với em từng nghĩ đến việc dừng lại
-        nhưng không thể vì anh với em đã quen hình bóng của nhau gòi.<br><br>
-        Cảm ơn em vì đã ở bên anh những lúc anh khó khăn
-        và những lúc anh nóng tính nói với em những lời hơi khó nghe.<br><br>
-        Và cảm ơn em vì em đã đồng hành và giúp anh sửa
-        những điều chưa được tốt và giúp đỡ anh gất nhìu 💗<br><br>
-        Anh mong là sau này dù có gì em vẫn sẽ ở bên anh
-        và cùng anh già đi.<br><br>
-        Anh yêu em nhiều lắm ❤️
-    </p>
 </div>
 
 <script>
-let autoSlideInterval;
+let slideIndex = 0;
 
+/* MỞ THIỆP */
 function openCard() {
     const env = document.getElementById("envelope");
     const card = document.getElementById("card");
@@ -221,55 +186,49 @@ function openCard() {
     env.classList.add("open");
 
     setTimeout(() => {
-        env.classList.add("hide");
+        env.style.display = "none";
         card.classList.add("show");
-        startHearts();
         countDays();
+        startHearts();
         startAutoSlide();
-    }, 700);
+    }, 600);
 }
 
+/* ĐẾM NGÀY YÊU */
 function countDays() {
     const startDate = new Date(2025, 5, 15);
     const today = new Date();
-    const diff = today - startDate;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const days = Math.floor((today - startDate) / (1000*60*60*24));
     document.getElementById("dayCounter").innerText =
-        `Tụi mình đã yêu nhau được ${days} ngày 💕`;
+        `Tụi mình đã yêu nhau được ${days} ngày 💗`;
 }
 
-function startAutoSlide() {
-    const timeline = document.getElementById("timeline");
-    const slides = document.querySelectorAll(".slide");
-    let index = 0;
+/* TIM RƠI */
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(heart);
 
-    autoSlideInterval = setInterval(() => {
-        index = (index + 1) % slides.length;
+        setTimeout(() => heart.remove(), 5000);
+    }, 350);
+}
+
+/* AUTO CHẠY ẢNH */
+function startAutoSlide() {
+    const timeline = document.querySelector(".timeline");
+    const slides = document.querySelectorAll(".slide");
+
+    setInterval(() => {
+        slideIndex = (slideIndex + 1) % slides.length;
         timeline.scrollTo({
-            left: slides[index].offsetLeft,
+            left: slides[slideIndex].offsetLeft,
             behavior: "smooth"
         });
-    }, 3000);
-}
-
-function startHearts() {
-    let count = 0;
-    const interval = setInterval(() => {
-        createHeart();
-        count++;
-        if (count > 22) clearInterval(interval);
-    }, 180);
-}
-
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart-fall";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 2) + "s";
-    heart.style.fontSize = (14 + Math.random() * 18) + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
+    }, 4000);
 }
 </script>
 
